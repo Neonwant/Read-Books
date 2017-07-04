@@ -1,5 +1,5 @@
 import { ApiService } from './api.service';
-import { List, User} from '../models';
+import {Book, List, User} from '../models';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -13,4 +13,7 @@ export class UserService {
     return this.api.get(this.path + '/latest');
   }
 
+  getUserBooks(userId: string): Observable<Book[]> {
+    return this.api.get(`${this.path}/${userId}/books`);
+  }
 }

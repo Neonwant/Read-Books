@@ -11,7 +11,7 @@ import {UserService} from '../services/user.service';
 export class HomeComponent {
   private latestNoteBooks: Book[];
   private latestUsers: User[];
-  private err;
+
   constructor(private bookService: BookService, private userService: UserService) {
     this.bookService.getLatestNotes().subscribe((list: List<Book>) => {
       this.latestNoteBooks = Object.keys(list).map(key => list[key]);

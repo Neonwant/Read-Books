@@ -9,10 +9,11 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
+import { UserBookListComponent } from './components/user-book-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent
+    AppComponent, HomeComponent, UserBookListComponent
   ],
   imports: [
     BrowserModule,
