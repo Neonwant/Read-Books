@@ -1,6 +1,7 @@
-{
-  "/books": {
-      "target": "http://api.knigopis.com/",
-      "changeOrigin": true
+[
+  {
+    "context": ["/books", "/users", "/subscriptions", "/wishes"],
+    "target": "http://api.knigopis.com/",
+    "changeOrigin": true
   }
-}
+]

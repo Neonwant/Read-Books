@@ -3,9 +3,15 @@
 </h1>
 <p>Hello world</p>
 
+<pre>{{ err | json }}</pre>
+
+<ul>
+  <li *ngFor="let user of latestUsers">{{ user.nickname }}<sup>{{ user.booksCount }}</sup> </li>
+</ul>
+
 <ul>
   <li *ngFor="let book of latestNoteBooks">
-    {{ book.title}} ~ <strong>{{ book.user.nickname }} </strong>
+    {{ book.title }} ~ <strong>{{ book.user.nickname }} </strong>
   </li>
 </ul>
 
