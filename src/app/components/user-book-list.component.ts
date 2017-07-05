@@ -15,6 +15,7 @@ export class UserBookListComponent implements OnInit, OnDestroy {
   private user: User = new User();
   private userId: string;
   private routeSub: Subscription;
+  private bookGroups = [];
 
   constructor(private userService: UserService, private route: ActivatedRoute) {
 
@@ -29,7 +30,19 @@ export class UserBookListComponent implements OnInit, OnDestroy {
 
         return this.userService.getUserBooks(params['u'])
       })
-      .subscribe((list: Book[]) => {  this.userBooks = list;  });
+      .subscribe((list: Book[]) => {
+        this.userBooks = list;
+        const years = new Set(list.map(i => i.readYear)); // for unique
+        this.bookGroups = Array.from(years)
+          .sort()
+          .reverse()
+          .map(y => {
+          return {
+            year: y,
+            count: this.userBooks.filter(b => b.readYear === y).length
+          }
+        });
+      });
 
   }
 

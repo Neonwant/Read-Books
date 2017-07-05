@@ -11,10 +11,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
 import { UserBookListComponent } from './components/user-book-list.component';
 import { BookComponent } from './components/book.component';
+import { YearSortPipe } from './pipes/year-sort.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, UserBookListComponent, BookComponent
+    AppComponent, HomeComponent, UserBookListComponent, BookComponent, YearSortPipe
   ],
   imports: [
     BrowserModule,
