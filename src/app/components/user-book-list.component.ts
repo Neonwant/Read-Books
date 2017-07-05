@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -16,7 +16,7 @@ export class UserBookListComponent implements OnInit, OnDestroy {
   private userId: string;
   private routeSub: Subscription;
   private bookGroups = [];
-
+  private error: string;
   constructor(private userService: UserService, private route: ActivatedRoute) {
 
   }
@@ -30,24 +30,31 @@ export class UserBookListComponent implements OnInit, OnDestroy {
 
         return this.userService.getUserBooks(params['u'])
       })
-      .subscribe((list: Book[]) => {
-        this.userBooks = list;
-        const years = new Set(list.map(i => i.readYear)); // for unique
-        this.bookGroups = Array.from(years)
-          .sort()
-          .reverse()
-          .map(y => {
-          return {
-            year: y,
-            count: this.userBooks.filter(b => b.readYear === y).length
-          }
-        });
-      });
+      .subscribe(this.bookLoadSuccess, this.bookLoadFail)
 
   }
 
   ngOnDestroy() {
     this.routeSub.unsubscribe();
+  }
+
+  bookLoadSuccess = (list: Book[]) => {
+    this.userBooks = list;
+    const years = new Set(list.map(i => i.readYear)); // for unique
+    this.bookGroups = Array.from(years).sort().reverse()
+      .map(y => {
+        return {
+          year: y,
+          count: this.userBooks.filter(b => b.readYear === y).length
+        }
+      });
+  }
+
+  bookLoadFail = (err: string) => {
+    this.error = err;
+    this.userBooks = [];
+    this.bookGroups = [];
+    this.user = new User();
   }
 }
 
