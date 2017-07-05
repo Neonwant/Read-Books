@@ -10,10 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home.component';
 import { UserBookListComponent } from './components/user-book-list.component';
+import { BookComponent } from './components/book.component';
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, UserBookListComponent
+    AppComponent, HomeComponent, UserBookListComponent, BookComponent
   ],
   imports: [
     BrowserModule,
