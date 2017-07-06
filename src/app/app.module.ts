@@ -13,6 +13,7 @@ import { UserBookListComponent } from './components/user-book-list.component';
 import { BookComponent } from './components/book.component';
 import { YearSortPipe } from './pipes/year-sort.pipe';
 import { BookSearchPipe } from './pipes/book-search.pipe';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { BookSearchPipe } from './pipes/book-search.pipe';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [BookService, UserService, ApiService],
+  providers: [BookService, UserService, ApiService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

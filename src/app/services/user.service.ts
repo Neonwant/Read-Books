@@ -20,4 +20,8 @@ export class UserService {
   getUserInfo(userId: string): Observable<User> {
     return this.api.get(this.path + '/' + userId)
   }
+
+  getCredentials(authToken: string) {
+    return this.api.post(this.path + '/get-credentials', { token: authToken });
+  }
 }

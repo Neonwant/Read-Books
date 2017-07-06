@@ -9,8 +9,8 @@ import {UserService} from '../services/user.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
-  private latestNoteBooks: Book[];
-  private latestUsers: User[];
+  private latestNoteBooks: Book[] = [];
+  private latestUsers: User[] = [];
 
   constructor(private bookService: BookService, private userService: UserService) {
     this.bookService.getLatestNotes().subscribe((list: List<Book>) => {
