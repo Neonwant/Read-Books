@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import {AuthService} from './services/auth.service';
 
 @Component({
   selector: 'k-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'k';
+
+  constructor(private authService: AuthService) {
+    this.authService.setAuthHook();
+  }
+
 }
